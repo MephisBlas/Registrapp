@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding class="product-item" *ngFor="let p of products">
+      <ion-item>
+        <ion-avatar>
+          <img [src]="p.image" alt="Product Image" />
+        </ion-avatar>
+        <ion-label>
+          <div class="name">{{ p.name }}</div>
+          <div class="data"><strong>Seccion:</strong>{{p.seccion}}</div>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options>
+        <ion-item-option (click)="deleteProduct(p)" color="danger"><ion-icon class="option-btn" name="trash-outline"></ion-icon></ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-button (click)="appUdateProduct()"><ion-icon name="add"></ion-icon></ion-button>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary"></ion-toolbar>
+</ion-footer>

@@ -1,0 +1,30 @@
+
+
+
+<ion-menu contentId="menu-content" menuId="menu-content" side="start">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+      </ion-buttons>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-text-center">
+    <ion-icon class="avatar-icon" name="person-circle-outline"></ion-icon>
+    <h5>{{user()?.name}}</h5>
+    <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+      <ion-item [routerLink]="p.url" routerDirection="root" detail>
+        <ion-icon slot="start" [name]="p.icon"></ion-icon>
+        <ion-label>{{p.title}}</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-toolbar color="primary"><ion-button  expand="full" (click)="signOut()">Cerrar Sesión</ion-button></ion-toolbar>
+  </ion-footer>
+</ion-menu>
+
+<ion-router-outlet id="menu-content" main></ion-router-outlet>
+

@@ -1,0 +1,42 @@
+<app-header [isModal]="true" title="Agregae asignatura qr"></app-header>
+
+<ion-content>
+  <form [formGroup]="form" class="ion-padding ion-text-center" (ngSubmit)="submit()">
+<!--si existe imagen-->
+    <ion-avatar  *ngIf="form.value.image">
+      <img [src]="form.value.image" >
+    </ion-avatar>
+<!--no existe imagen-->
+
+<ion-icon class=".image-icon" *ngIf="!form.value.image" name="image-outline"></ion-icon>
+<br>
+
+    <!-- seccion -->
+    <app-custom-input autocomplete="seccion"  [control]="form.controls.seccion" type="text"
+      label="Seccion"></app-custom-input>
+
+    <div class="validators" *ngIf="form.controls.seccion.errors && form.controls.seccion.touched">
+      <div *ngIf="form.controls.seccion.hasError('required')">La seccion es requerida</div>
+      <div *ngIf="form.controls.seccion.hasError('minlength')">La seccion debe tener al menos 4 caracteres</div>
+    </div>
+
+    <!-- NOMBRE -->
+    <app-custom-input autocomplete="name" [control]="form.controls.name" type="text"
+      label="Nombre"></app-custom-input>
+
+    <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
+      <div *ngIf="form.controls.name.hasError('required')">El nombre es requerido</div>
+      <div *ngIf="form.controls.name.hasError('minlength')">El nombre debe tener al menos 4 caracteres</div>
+    </div>
+    
+    <ion-button size="small" (click)="takeImage()" mode="ios"  type="submit" fill="clear">Subir imagen QR <ion-icon
+      slot="end"></ion-icon></ion-button>
+<br><br>
+    <!-- Botones -->
+    <ion-button expand="block" mode="ios" type="submit" style="margin-top: 10px;">Agregar QR asignatura <ion-icon slot="end"></ion-icon></ion-button>
+
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="primary"></ion-toolbar>
+</ion-footer>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "registrapp-d5f07": {
+      "hosting": {
+        "app": [
+          "registrapp-d5f07"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "registrapp-d5f07"
+  }
+}

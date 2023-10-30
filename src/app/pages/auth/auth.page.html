@@ -1,0 +1,31 @@
+<app-header title="Login"></app-header>
+
+<ion-content>
+  <div class="d-flex-cent">
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
+      <app-custom-input autocomplete="email" icon="mail-outline" [control]="form.controls.email" type="email"
+        label="Correo"></app-custom-input>
+
+      <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+        <div *ngIf="form.controls.email.hasError('required')">El correo es requerido</div>
+        <div *ngIf="form.controls.email.hasError('email')">Ingrese un correo válido</div>
+      </div>
+
+      <app-custom-input [control]="form.controls.password" icon="lock-closed-outline" type="password"
+        label="Contraseña"></app-custom-input>
+
+      <div class="validators" *ngIf="form.controls.password.errors && form.controls.password.touched">
+        <div *ngIf="form.controls.password.hasError('required')">La contraseña es requerida</div>
+      </div>
+
+      <!-- Botones -->
+      <ion-button expand="block" mode="ios" class="submit" type="submit" [disabled]="form.invalid">Iniciar sesión <ion-icon slot="end" name="log-in-outline"></ion-icon></ion-button>
+
+      <ion-button expand="block"  routerLink="sing-up" mode="ios" fill="outline">Registrate <ion-icon slot="end" name="person-add-outline"></ion-icon></ion-button>
+    </form>
+    <ion-button expand="block"  routerLink="forgot-password" mode="ios" fill="clear">Restablecer contraseña</ion-button>
+  </div>
+</ion-content>
+<ion-footer>
+<ion-toolbar color="primary"></ion-toolbar>  
+</ion-footer>
